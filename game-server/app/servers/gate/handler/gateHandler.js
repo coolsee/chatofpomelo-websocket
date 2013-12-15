@@ -20,6 +20,7 @@ var handler = Handler.prototype;
  */
 handler.queryEntry = function(msg, session, next) {
 	var uid = msg.uid;
+    console.log("uid %s", uid);
 	if(!uid) {
 		next(null, {
 			code: 500
@@ -27,6 +28,7 @@ handler.queryEntry = function(msg, session, next) {
 		return;
 	}
 	// get all connectors
+    var a = this.app;
 	var connectors = this.app.getServersByType('connector');
 	if(!connectors || connectors.length === 0) {
 		next(null, {
